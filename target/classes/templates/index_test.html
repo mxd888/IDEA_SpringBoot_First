@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页</title>
+</head>
+<body>
+<h1>IDEA--------米大东测试</h1>
+<!--thymeleaf：将span里面的文本内容设置为${}-->
+<span th:text="${hello}">名字为：hello的值</span><br>
+<!--thymeleaf：使用th:任意属性替换原生属性-->
+<span id="one" class="one" th:id="${two}" th:class="${two}" th:text="${hello}+asd"></span><br>
+<!--if、else---Boolean-->
+<span th:text="${5>1}? '为真' : '为假'"></span>
+<!--混合使用 if、else-->
+<span th:text="${5>2}? (${1>2}? '1>2正确' : '1>2错误') : '5>1错误'"></span>
+<!--只有一个结果、为真执行、为假不执行-->
+<span th:text="${5>3}? '为真'"></span>
+<!--三元运行，为真执行 “好”，否则不执行 _  -->
+<span th:text="${5<6}? '5>6正确' : _ "></span>
+<!--判断当条件成立时生效、不成立时不生效-->
+<span th:text="${msg}" th:if="${ not #strings.isEmpty(msg)}"></span>
+<span th:text="${secces}" th:if="${ #strings.isEmpty(secces)}"></span>
+
+</body>
+</html>

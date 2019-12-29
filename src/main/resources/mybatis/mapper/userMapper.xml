@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.crud.dao.userDao">
+    <select id="selectAll" resultType="com.ssm.crud.entity.User">
+        select * from user;
+    </select>
+    <select id="selectById" resultType="com.ssm.crud.entity.User" parameterType="Integer">
+        select * from user where userId=#{id}
+    </select>
+    <insert id="insertUser" parameterType="com.ssm.crud.entity.User">
+        insert into user(userId,userName,userPass,userEmail,userAddr) values (null ,#{userName},#{userPass},#{userEmail},#{userAddr});
+    </insert>
+    <delete id="deleteUser" parameterType="Integer" >
+        delete from user where userId=#{id}
+    </delete>
+    <update id="updateById" parameterType="com.ssm.crud.entity.User">
+        update user set userName=#{userName},userPass=#{userPass},userEmail=#{userEmail},userAddr=#{userAddr}
+         where userId=#{userId};
+
+    </update>
+</mapper>

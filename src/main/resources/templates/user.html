@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+
+
+<div th:text="${#lists.isEmpty(user)}" >
+</div>
+
+
+<div th:each="users : ${user}">
+    <span th:text="${users.userId}==1 ? 'ID大于1' : _"></span>
+    <span th:text="ID+':'+${users.userId}"></span>
+    <span th:text="名字+':'+${users.userName}"></span>
+    <span th:text="密码+':'+${users.userPass}"></span>
+    <span th:text="email+':'+${users.userEmail}"></span>
+    <span th:text="地址+':'+${users.userAddr}"></span>
+
+    <!--使用方法："[( ...  )]"相当于：th: utext 不会转义特殊字符 <h1>会使字体变大-->
+    <p>[(包含<'h1'>)]的行内写法:[(${users.userAddr})] </p>
+    <!--使用方法："[[ ...  ]]"相当于：th:text 会转义特殊字符  <h1>直接输出-->
+    <span >[[包含<'h1'>]]的行内写法:[[${users.userAddr}]]</span>
+</div>
+<!--<div th:object="${user}" >-->
+<!--    <p>Name:<span th:text="*{userId}"></span></p>-->
+<!--    <p>Name:<span th:text="*{userName}"></span></p>-->
+<!--    <p>Name:<span th:text="*{userPass}"></span></p>-->
+<!--    <p>Name:<span th:text="*{userEmail}"></span></p>-->
+<!--    <p>Name:<span th:text="*{userAddr}"></span></p>-->
+
+<!--</div>-->
+</body>
+</html>
